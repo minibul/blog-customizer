@@ -1,6 +1,7 @@
 .container {
-	position: fixed;
-	top: 31px;
+	position: absolute;
+	top: 32px;
+	left: 614px;
 	display: flex;
 	flex-shrink: 0;
 	justify-content: center;
@@ -11,6 +12,7 @@
 	background-color: #000000;
 	border-right: 1px;
 	transition: transform 0.5s ease;
+	pointer-events: auto;
 }
 
 .container:hover {
@@ -22,7 +24,7 @@
 }
 
 .container_open {
-	transform: translate(616px);
+	transform: translate(0);
 }
 
 .arrow {

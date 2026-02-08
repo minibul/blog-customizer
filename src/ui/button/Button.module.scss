@@ -3,8 +3,9 @@
 	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
-	width: 210px;
-	height: 50px;
+	width: 180px;
+	height: 48px;
+	padding: 12px 0;
 	text-align: center;
 	border: 1px solid #000000;
 	cursor: pointer;
@@ -15,17 +16,29 @@
 }
 
 .button_clear {
-	background-color: white;
+	background-color: #ffc802;
 }
 
 .button_apply:hover {
 	background-color: #ffedab;
 }
 
+.button_apply:active {
+	background-color: #d7d7d7;
+}
+
 .button_clear:hover {
 	background-color: #000000;
 }
 
+.button_clear:active {
+	background-color: #000000;
+}
+
 .button_clear:hover div {
+	color: white;
+}
+
+.button_clear:active div {
 	color: white;
 }

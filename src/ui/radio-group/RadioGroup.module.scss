@@ -32,10 +32,12 @@
 	cursor: pointer;
 }
 
-/* Убираем бордер у последнего в radiogroup, чтобы не было двойного бордера */
-
 .label:hover {
 	background-color: #ffedab;
+}
+
+.label:active {
+	background-color: #d7d7d7;
 }
 
 .item[data-checked='true'] .label {
@@ -47,6 +49,10 @@
 }
 
 .item[data-checked='true'] .label:hover {
+	background: var(--gold, #ffc802);
+}
+
+.item[data-checked='true'] .label:active {
 	background: var(--gold, #ffc802);
 }
 
