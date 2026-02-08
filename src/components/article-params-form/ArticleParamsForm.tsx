@@ -27,12 +27,12 @@ export const ArticleParamsForm = ({
 	currentState,
 	onApply,
 }: ArticleParamsFormProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [formState, setFormState] = useState<ArticleStateType>(currentState);
 	const sidebarRef = useRef<HTMLDivElement>(null);
 
 	const handleToggle = () => {
-		setIsOpen((prev) => !prev);
+		setIsMenuOpen((prev) => !prev);
 	};
 
 	const handleSubmit = (e: FormEvent) => {
@@ -50,14 +50,14 @@ export const ArticleParamsForm = ({
 	}, [currentState]);
 
 	useEffect(() => {
-		if (!isOpen) return;
+		if (!isMenuOpen) return;
 
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
 				sidebarRef.current &&
 				!sidebarRef.current.contains(event.target as Node)
 			) {
-				setIsOpen(false);
+				setIsMenuOpen(false);
 			}
 		};
 
@@ -65,13 +65,15 @@ export const ArticleParamsForm = ({
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
-	}, [isOpen]);
+	}, [isMenuOpen]);
 
 	return (
 		<aside
 			ref={sidebarRef}
-			className={clsx(styles.container, { [styles.container_open]: isOpen })}>
-			<ArrowButton isOpen={isOpen} onClick={handleToggle} />
+			className={clsx(styles.container, {
+				[styles.container_open]: isMenuOpen,
+			})}>
+			<ArrowButton isOpen={isMenuOpen} onClick={handleToggle} />
 			<form className={styles.form} onSubmit={handleSubmit}>
 				<Text as='h2' size={31} weight={800} uppercase>
 					Задайте параметры
@@ -86,15 +88,15 @@ export const ArticleParamsForm = ({
 					}
 				/>
 
-			<RadioGroup
-				name='radio'
-				title='Размер шрифта'
-				selected={formState.fontSizeOption}
-				options={fontSizeOptions}
-				onChange={(option) =>
-					setFormState({ ...formState, fontSizeOption: option })
-				}
-			/>
+				<RadioGroup
+					name='radio'
+					title='Размер шрифта'
+					selected={formState.fontSizeOption}
+					options={fontSizeOptions}
+					onChange={(option) =>
+						setFormState({ ...formState, fontSizeOption: option })
+					}
+				/>
 
 				<Select
 					title='Цвет шрифта'
